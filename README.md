@@ -10,6 +10,7 @@ UKMF currently has the following features:
 * API for defining custom arm variations
 * Easy methods for mods to store their own custom save data
 * A simple interface for mods to read static files on disk
+* Interface for adding custom content to the spawn menu
 * Helper classes for handling save data and weapon configuration
 
 ## Difference from ULTRAKIT
@@ -122,4 +123,26 @@ AssetBundle bundle = assets.ReadBundle("bundle");
 foreach(string name in bundle.GetAllAssetNames()) {
 	Logger.LogMessage(name);
 }
+```
+
+### Custom Sandbox Tools
+
+To create a custom tool, first you will need to define an icon:
+
+```cs
+Texture2D tex = AssetManager.Create(Info).ReadImage("icon_box.png");
+Sprite sprite = Sprite.Create(tex, new Rect(0f, 0f, tex.width, tex.height), Vector2.zero);
+
+CustomSandboxTools.AddNewIcon("your.guid.here:box", sprite);
+```
+
+Then, you can define the tool itself by creating a `SpawnableObject`:
+
+```cs
+CustomSandboxTools.AddNewTool(new SpawnableObject() { 
+	identifier = "your.guid.here:box",
+	objectName = "box",
+	gameObject = myObj, // "myObj" should be an object created elsewhere, usually loaded from an asset bundle
+	iconKey = "your.guid.here:box"
+});
 ```
