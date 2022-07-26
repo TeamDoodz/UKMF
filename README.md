@@ -9,6 +9,7 @@ UKMF currently has the following features:
 * Ability to reserve custom enum values without fear of mod conflict
 * API for defining custom arm variations
 * Easy methods for mods to store their own custom save data
+* A simple interface for mods to read static files on disk
 * Helper classes for handling save data and weapon configuration
 
 ## Difference from ULTRAKIT
@@ -91,5 +92,34 @@ MyFile.SetBytes("someData", new byte[] { 0x0C, 0x25 });
 
 foreach(var b in MyFile.GetBytes("someData")) {
 	Logger.LogMessage(b.ToString());
+}
+```
+
+### Asset Manager
+
+The `AssetManager` class aids in reading files from disk. To create one, simply use the `AssetManager.Create` method:
+
+```cs
+// In this context, "Info" is the PluginInfo object associated with your main plugin class.
+var assets = AssetManager.Create(Info);
+```
+
+Then you can load text, JSON, image, and binary files:
+
+```cs
+// The path passed to these methods is relative to (Plugin Path)/assets
+string text = assets.ReadText("myText.txt");
+Vector3 position = assets.ReadJSON<Vector3>("position.json");
+Texture2D art = assets.ReadImage("art.jpg");
+byte[] rawData = assets.ReadBytes("data.bytes");
+```
+
+You can also load custom Unity assets through asset bundles:
+
+```cs
+// For the best compatibility, asset bundles should be built using Unity v2019.4.
+AssetBundle bundle = assets.ReadBundle("bundle");
+foreach(string name in bundle.GetAllAssetNames()) {
+	Logger.LogMessage(name);
 }
 ```
