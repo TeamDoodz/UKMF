@@ -27,10 +27,6 @@ namespace UKMF {
 			CustomArms.AddBaseGameArms();
 
 			logger.LogMessage($"{Name} v{Version} Loaded!");
-
-			ModdedSaveFile MyFile = this.CreateSaveFile("MyData");
-			MyFile.Data.SetString("message", "Hello, World!");
-			MyFile.Save();
 		}
 	}
 }
