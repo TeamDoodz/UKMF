@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using HarmonyLib;
 using UnityEngine;
@@ -13,6 +14,9 @@ namespace UKMF.Weapons {
 		public static CustomArmInfo GetInfo(FistType ID) => AllData.Find(x => x.ID == ID);
 		public static CustomArmInfo GetCurrentInfo() => GetInfo(Weapon.CurrentArm);
 		public static void AddArm(CustomArmInfo arm) {
+			if(AllData.Any((x) => x.ID == arm.ID)) {
+				throw new InvalidOperationException("An arm with that ID already exists.");
+			}
 			AllData.Add(arm);
 			MainPlugin.logger.LogInfo($"New arm registered: {arm.DisplayName} {(arm.IsBaseGame? "(Base game)" : "")} {(arm.Holdable? "" : "(Not holdable)")}");
 			OnArmAdded?.Invoke(arm);
