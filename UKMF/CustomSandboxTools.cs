@@ -59,10 +59,10 @@ namespace UKMF {
 		private static class AddCustomObjsPatch {
 			static bool Prefix(SpawnMenu __instance) {
 				__instance.ResetMenu();
-				if(MapInfoBase.InstanceAnyType.sandboxTools) {
+				//if(MapInfoBase.InstanceAnyType.sandboxTools) {
 					__instance.CreateButtons(__instance.objects.sandboxTools, "SANDBOX TOOLS :^)");
 					__instance.CreateButtons(__instance.objects.sandboxObjects, "SANDBOX");
-				}
+				//}
 				__instance.CreateButtons(__instance.objects.enemies, "ENEMIES");
 				__instance.CreateButtons(__instance.objects.objects, "ITEMS");
 				__instance.CreateButtons(customObjs.ToArray(), "MODDED CONTENT");
