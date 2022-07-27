@@ -10,6 +10,11 @@ namespace UKMF.Saving {
 		private Dictionary<string, bool> bools = new Dictionary<string, bool>();
 		private Dictionary<string, byte[]> binary = new Dictionary<string, byte[]>();
 
+		/// <summary>
+		/// Whether or not any changes have been made to this instance since the last time it was saved.
+		/// </summary>
+		public bool Dirty { get; set; }
+
 		public int GetInt(string key, int fallback = 0) {
 			if(!ints.ContainsKey(key)) return fallback;
 			return ints[key];
@@ -20,6 +25,7 @@ namespace UKMF.Saving {
 			} else {
 				ints.Add(key, value);
 			}
+			Dirty = true;
 		}
 
 		public float GetFloat(string key, float fallback = 0f) {
@@ -32,6 +38,7 @@ namespace UKMF.Saving {
 			} else {
 				floats.Add(key, value);
 			}
+			Dirty = true;
 		}
 
 		public string GetString(string key, string fallback = "") {
@@ -44,6 +51,7 @@ namespace UKMF.Saving {
 			} else {
 				strings.Add(key, value);
 			}
+			Dirty = true;
 		}
 
 		public bool GetBool(string key, bool fallback = false) {
@@ -56,6 +64,7 @@ namespace UKMF.Saving {
 			} else {
 				bools.Add(key, value);
 			}
+			Dirty = true;
 		}
 
 		public bool BytesExist(string key) => binary.ContainsKey(key);
@@ -69,6 +78,7 @@ namespace UKMF.Saving {
 			} else {
 				binary.Add(key, value);
 			}
+			Dirty = true;
 		}
 
 		/// <summary>
