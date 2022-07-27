@@ -65,7 +65,7 @@ namespace UKMF {
 				//}
 				__instance.CreateButtons(__instance.objects.enemies, "ENEMIES");
 				__instance.CreateButtons(__instance.objects.objects, "ITEMS");
-				__instance.CreateButtons(customObjs.ToArray(), "MODDED CONTENT");
+				if(customObjs.Count > 0) __instance.CreateButtons(customObjs.ToArray(), "MODDED CONTENT");
 				__instance.sectionReference.gameObject.SetActive(false);
 				return false;
 			}
