@@ -8,6 +8,7 @@ namespace UKMF {
 	/// Allows mods to add their own tools to the spawn menu.
 	/// </summary>
 	public static class CustomSandboxTools {
+		/*
 		private static List<CheatAssetObject.KeyIcon> customIcons = new List<CheatAssetObject.KeyIcon>();
 		/// <summary>
 		/// Adds a new sandbox icon. Make sure the name of the icon is unique; you can do this by adding your mod GUID as a prefix to the name.
@@ -25,22 +26,24 @@ namespace UKMF {
 		public static void AddNewIcon(string iconName, Sprite icon) {
 			AddNewIcon(new CheatAssetObject.KeyIcon() { key = iconName, sprite = icon });
 		}
+		*/
 
 		private static List<SpawnableObject> customObjs = new List<SpawnableObject>();
 		/// <summary>
-		/// Adds a new sandbox tool. To define an icon you can use <see cref="SpawnableObject.gridIcon"/> or <see cref="AddNewIcon(string, Sprite)"/> with <see cref="SpawnableObject.iconKey"/>.
+		/// Adds a new sandbox tool.
 		/// </summary>
 		public static void AddNewTool(SpawnableObject obj) {
 			customObjs.Add(obj);
 		}
-		 
+		
+		/*
 		[HarmonyPatch(typeof(IconManager))]
 		[HarmonyPatch(nameof(IconManager.CurrentIcons), MethodType.Getter)]
 		private static class AddCustomIconsPatch {
-			static bool printedIconNames = false;
+			static bool firstTime = true;
 			static void Postfix(ref CheatAssetObject __result) {
-				if(!printedIconNames) {
-					printedIconNames = true;
+				if(firstTime) {
+					firstTime = false;
 					MainPlugin.logger.LogDebug("Base Game Sandbox Icons:");
 					foreach(var icon in __result.sandboxToolIcons) {
 						MainPlugin.logger.LogDebug(icon.key);
@@ -53,6 +56,7 @@ namespace UKMF {
 				__result.sandboxToolIcons = newIcons.ToArray();
 			}
 		}
+		*/
 
 		[HarmonyPatch(typeof(SpawnMenu))]
 		[HarmonyPatch(nameof(SpawnMenu.RebuildMenu))]
