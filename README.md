@@ -24,6 +24,10 @@ UKMF currently has the following features:
 | Unity is required to make plugins                                                  | Unity is only required for custom assets                                              |
 | Easy learning curve                                                                | Intermediate C# knowledge required                                                    |
 
+## Compatability
+
+There are no plans to make UKMF compatible with any other modding framework, including ad-hoc ones like [Ultrakill-Custom-Arms-Proof-Of-Concept](https://github.com/Temperz87/Ultrakill-Custom-Arms-Proof-Of-Concept).
+
 ## Feature Showcase
 
 ### Custom Enums
