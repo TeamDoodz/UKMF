@@ -9,6 +9,8 @@ namespace UKMF.Sandbox {
 		private static List<(ICheat,string)> customCheats = new List<(ICheat,string)>();
 		private static List<(Predicate<string>, string)> renames = new List<(Predicate<string>, string)>();
 
+		public static ICheat GetCheat(string guid, string name) => CheatsManager.Instance.idToCheat[IdentifierUtil.CreateIdentifier(guid, name)];
+
 		/// <summary>
 		/// Adds a new cheat into the game. <b>Not recommended</b>, use <see cref="AddCheat(CustomCheatInfo, string)"/> instead.
 		/// </summary>
