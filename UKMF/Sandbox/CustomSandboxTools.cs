@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using HarmonyLib;
 using System.Linq;
@@ -15,7 +16,11 @@ namespace UKMF.Sandbox {
 		/// </summary>
 		public static void AddNewTool(SpawnableObject obj) {
 			customObjs.Add(obj);
+			MainPlugin.logger.LogInfo($"New tool added: {obj.identifier} ({obj.spawnableType})");
+			OnToolAdded?.Invoke(obj);
 		}
+
+		public static event Action<SpawnableObject> OnToolAdded;
 
 		[HarmonyPatch(typeof(SpawnMenu))]
 		[HarmonyPatch(nameof(SpawnMenu.RebuildMenu))]

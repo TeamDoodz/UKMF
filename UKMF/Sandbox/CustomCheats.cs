@@ -13,6 +13,7 @@ namespace UKMF.Sandbox {
 		/// </summary>
 		public static void AddCheat(ICheat cheat, string category = "modded") {
 			customCheats.Add((cheat, category));
+			MainPlugin.logger.LogInfo($"New cheat added: {cheat.Identifier}");
 			OnCheatAdded?.Invoke((cheat, category));
 		}
 		/// <summary>

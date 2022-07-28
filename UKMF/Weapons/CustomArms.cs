@@ -18,7 +18,7 @@ namespace UKMF.Weapons {
 				throw new InvalidOperationException("An arm with that ID already exists.");
 			}
 			AllData.Add(arm);
-			MainPlugin.logger.LogInfo($"New arm registered: {arm.DisplayName} {(arm.IsBaseGame? "(Base game)" : "")} {(arm.Holdable? "" : "(Not holdable)")}");
+			if(!arm.IsBaseGame) MainPlugin.logger.LogInfo($"New arm added: {arm.DisplayName} {(arm.Holdable? "" : "(Not holdable)")}");
 			OnArmAdded?.Invoke(arm);
 		}
 
