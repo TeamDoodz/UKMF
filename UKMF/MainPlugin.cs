@@ -2,6 +2,7 @@
 using BepInEx.Logging;
 using HarmonyLib;
 using UKMF.Weapons;
+using UKMF.Sandbox.Extra;
 using UKMF.Saving;
 
 namespace UKMF {
@@ -25,6 +26,8 @@ namespace UKMF {
 			new Harmony(GUID).PatchAll();
 
 			CustomArms.AddBaseGameArms();
+
+			ExtraCheats.DoStuff();
 
 			logger.LogMessage($"{Name} v{Version} Loaded!");
 		}
