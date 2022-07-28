@@ -29,9 +29,9 @@ namespace UKMF.Sandbox {
 			activate?.Invoke();
 		}
 
-		public SimpleCheat(string displayName, string guid, string identifier, Sprite icon = null, Action activate = null) { 
+		public SimpleCheat(string displayName, string guid, string name, Sprite icon = null, Action activate = null) { 
 			this.displayName = displayName;
-			this.identifier = guid + ":" + identifier;
+			this.identifier = IdentifierUtil.CreateIdentifier(guid, name);
 			this.icon = icon;
 			this.activate = activate;
 		}
