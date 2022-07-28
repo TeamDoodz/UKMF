@@ -3,7 +3,7 @@ using UnityEngine;
 using HarmonyLib;
 using System.Linq;
 
-namespace UKMF {
+namespace UKMF.Sandbox {
 	/// <summary>
 	/// Allows mods to add their own tools to the spawn menu.
 	/// </summary>
