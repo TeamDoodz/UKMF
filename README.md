@@ -131,22 +131,13 @@ foreach(string name in bundle.GetAllAssetNames()) {
 
 ### Custom Sandbox Tools
 
-To create a custom tool, first you will need to define an icon:
-
-```cs
-Texture2D tex = AssetManager.Create(Info).ReadImage("icon_box.png");
-Sprite sprite = Sprite.Create(tex, new Rect(0f, 0f, tex.width, tex.height), Vector2.zero);
-
-CustomSandboxTools.AddNewIcon("your.guid.here:box", sprite);
-```
-
-Then, you can define the tool itself by creating a `SpawnableObject`:
+Creating a custom tool is easy:
 
 ```cs
 CustomSandboxTools.AddNewTool(new SpawnableObject() { 
 	identifier = "your.guid.here:box",
 	objectName = "box",
 	gameObject = myObj, // "myObj" should be an object created elsewhere, usually loaded from an asset bundle
-	iconKey = "your.guid.here:box"
+	gridIcon = myIcon // "myIcon" should be a sprite, usually loaded from disk/an asset bundle
 });
 ```
