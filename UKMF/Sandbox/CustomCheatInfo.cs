@@ -4,9 +4,9 @@ using System.Text;
 using UnityEngine;
 
 namespace UKMF.Sandbox {
-	// The developers were shitfaced when designing the cheat system and for some godless reason decided to abstract the code for a cheat to an interface.
-	// A goddamn interface.
-	// This class aims to remedy this, basically acting as an alternative (and far superiour) abstraction for cheats.
+	/// <summary>
+	/// An actually sane alternative to <see cref="ICheat"/>.
+	/// </summary>
 	public abstract class CustomCheatInfo {
 		/// <summary>
 		/// The display name of this cheat.
