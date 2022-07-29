@@ -9,7 +9,12 @@ namespace UKMF.Sandbox.Extra {
 
 		public override string Identifier => IdentifierUtil.CreateIdentifier(MainPlugin.GUID, "Godmode");
 
-		public override Sprite Icon => null;
+		public override Sprite Icon {
+			get {
+				var tex = MainPlugin.assets.ReadImage("cheaticon_godmode.png", FilterMode.Point);
+				return Sprite.Create(tex, new Rect(0f, 0f, tex.width, tex.height), Vector2.zero);
+			}
+		}
 
 		public override bool IsActive => isActive;
 
