@@ -11,7 +11,7 @@ namespace UKMF.Sandbox.Extra {
 
 		public override Sprite Icon {
 			get {
-				var tex = MainPlugin.assets.ReadImage("cheaticon_godmode.png");
+				var tex = MainPlugin.assets.ReadImage("cheaticon_godmode.png", FilterMode.Point);
 				return Sprite.Create(tex, new Rect(0f, 0f, tex.width, tex.height), Vector2.zero);
 			}
 		}
