@@ -17,8 +17,7 @@ namespace UKMF.Sandbox {
 
 		public string ButtonDisabledOverride => Info.DisabledText;
 
-		//TODO: Custom cheat icons
-		public string Icon => null;
+		public string Icon => Info.Identifier;
 
 		public bool IsActive => Info.IsActive;
 
@@ -40,6 +39,7 @@ namespace UKMF.Sandbox {
 
 		public CustomCheatInfoToICheatAdapter(CustomCheatInfo Info) {
 			this.Info = Info;
+			if(Info.Icon != null) CustomSandboxIcons.AddCheatIcon(Info.Identifier, Info.Icon);
 		}
 	}
 }
