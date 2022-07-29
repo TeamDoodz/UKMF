@@ -22,7 +22,7 @@ namespace UKMF {
 		/// <summary>
 		/// The current version of UKMF.
 		/// </summary>
-		public const string Version = "0.1.0";
+		public const string Version = "0.1.1";
 
 		private void Awake() {
 			logger = Logger;
