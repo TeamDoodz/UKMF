@@ -53,7 +53,9 @@ namespace UKMF.Weapons {
 		}
 
 		internal static void UpdateBaseGameIconColors() {
-
+			AllData[0].IconColor = Weapon.GetVariationColor(0);
+			AllData[1].IconColor = Weapon.GetVariationColor(2);
+			AllData[2].IconColor = Weapon.GetVariationColor(1);
 		}
 
 		public static event Action<CustomArmInfo> OnArmAdded;
@@ -123,6 +125,14 @@ namespace UKMF.Weapons {
 				__instance.ForceArm((int)Weapon.CurrentArm, false);
 				__instance.UpdateFistIcon();
 				return false;
+			}
+		}
+
+		[HarmonyPatch(typeof(ColorBlindSetter))]
+		[HarmonyPatch(nameof(ColorBlindSetter.UpdateColor))]
+		private static class UpdateBaseGameIconColorsPatch {
+			static void Postfix() {
+				UpdateBaseGameIconColors();
 			}
 		}
 	}
