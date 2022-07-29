@@ -15,6 +15,7 @@ namespace UKMF {
 
 		internal static ManualLogSource logger;
 		internal static ConfigFile cfg;
+		internal static AssetManager assets;
 
 		public const string GUID = "io.github.TeamDoodz.UKMF";
 		public const string Name = "UKMF";
@@ -26,6 +27,7 @@ namespace UKMF {
 		private void Awake() {
 			logger = Logger;
 			cfg = Config;
+			assets = AssetManager.Create(Info);
 			new Harmony(GUID).PatchAll();
 
 			CustomArms.AddBaseGameArms();
